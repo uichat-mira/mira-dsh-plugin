@@ -1,6 +1,6 @@
 {
   "name": "mira-dsh-plugin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "main": "index.js",
@@ -14,6 +14,12 @@
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "slots"
+      ]
     }
   },
   "engines": {
@@ -22,12 +28,27 @@
   },
   "scripts": {
     "test": "node --test",
-    "check": "node --test && node --check index.js"
+    "check": "pnpm run typecheck && pnpm run build && node --test && node --check index.js",
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@deepseek-ai/dsh-tools": "0.2.1-rc.5"
   },
   "bin": {
     "mira-task": "bin/mira-task.js"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.0",
+    "@types/react": "18.3.28",
+    "react": "18.3.1",
+    "tsdown": "0.22.14",
+    "typescript": "6.0.3"
+  },
+  "description": "Mira 速趴工头 — read-only engineering task and evidence panel for DeepSeek Harness",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
   }
 }

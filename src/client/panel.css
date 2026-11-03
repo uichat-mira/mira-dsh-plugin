@@ -1,0 +1,113 @@
+.msf-root {
+  --msf-ink: var(--dsw-alias-label-primary, #24272d);
+  --msf-muted: var(--dsw-alias-label-secondary, #747980);
+  --msf-subtle: var(--dsw-alias-label-tertiary, #8c9197);
+  --msf-border: var(--dsw-alias-border-l2, rgba(120,126,139,.18));
+  --msf-panel: var(--dsw-alias-bg-layer-1, #fff);
+  --msf-canvas: var(--dsw-alias-bg-base, #faf9f7);
+  --msf-soft: var(--dsw-alias-bg-layer-2, #f4f5f6);
+  --msf-action: var(--dsw-alias-brand-primary, #333d4c);
+  color: var(--msf-ink);
+  background: var(--msf-canvas);
+  min-height: 100%;
+  padding: clamp(20px, 5vw, 52px) clamp(14px, 4vw, 52px) 40px;
+  overflow: auto;
+}
+.msf-root *, .msf-root *::before, .msf-root *::after { box-sizing: border-box }
+.msf-root button, .msf-root input { font: inherit }
+.msf-root h1, .msf-root h2, .msf-root h3, .msf-root p { margin: 0 }
+.msf-root h1 { font-size: clamp(28px, 3vw, 36px); font-weight: 650; letter-spacing: -.04em; line-height: 1.22 }
+.msf-root h2 { font-size: 18px; line-height: 1.4; font-weight: 630; letter-spacing: -.015em }
+.msf-root h3 { font-size: 16px; line-height: 1.5; font-weight: 600; margin: 6px 0 0 }
+.msf-root a { color: inherit; text-decoration: none }
+.msf-root a:hover { text-decoration: underline; text-underline-offset: 3px }
+.msf-root :focus-visible { outline: 2px solid var(--msf-action); outline-offset: 3px }
+.msf-inner { max-width: 1000px; margin: 0 auto }
+.msf-header, .msf-brand, .msf-flex { display: flex; align-items: center }
+.msf-header, .msf-between { justify-content: space-between }
+.msf-header { gap: 20px }
+.msf-brand { gap: 14px }
+.msf-brand-icon {
+  width: 50px; height: 50px; border: 1px solid var(--msf-border);
+  border-radius: 15px; display: grid; place-items: center;
+  color: var(--msf-ink); background: var(--msf-panel);
+}
+.msf-kicker { font-size: 10px; font-weight: 680; letter-spacing: .14em; text-transform: uppercase; color: var(--msf-subtle); margin-bottom: 7px }
+.msf-intro { margin: 12px 0 28px 64px; font-size: 13px; line-height: 1.6; color: var(--msf-muted) }
+.msf-muted { color: var(--msf-muted); font-size: 13px; line-height: 1.65 }
+.msf-mini { font-size: 11px }
+.msf-tabs { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--msf-border); gap: 26px; margin-bottom: 26px }
+.msf-tab { color: var(--msf-muted); padding: 0 2px 13px; border: 0; background: transparent; font-size: 13px; cursor: pointer; position: relative }
+.msf-tab:hover { color: var(--msf-ink) }
+.msf-tab.msf-active { font-weight: 650; color: var(--msf-ink) }
+.msf-tab.msf-active::after { content: ''; position: absolute; background: var(--msf-ink); height: 2px; left: 0; right: 0; bottom: -1px; border-radius: 4px }
+.msf-chip { display: inline-flex; align-items: center; white-space: nowrap; gap: 6px; border-radius: 99px; border: 1px solid var(--msf-border); color: var(--msf-muted); background: var(--msf-panel); padding: 5px 10px; font-size: 11px; line-height: 1.2; font-weight: 570 }
+.msf-chip.msf-good { color: var(--dsw-alias-state-success-primary, #43836f); border-color: currentColor; background: transparent }
+.msf-chip.msf-warn { color: var(--dsw-alias-state-warn-primary, #98702d); border-color: currentColor; background: transparent }
+.msf-stack { display: grid; gap: 16px }
+.msf-paper { border: 1px solid var(--msf-border); background: var(--msf-panel); border-radius: 15px; padding: clamp(18px, 3vw, 27px); min-width: 0 }
+.msf-paper > p { margin-top: 4px }
+.msf-paper h2 { max-width: 660px }
+.msf-query { display: grid; grid-template-columns: minmax(150px, 2fr) minmax(110px, 1fr) minmax(110px, 1fr) auto; align-items: end; gap: 12px; margin-top: 22px }
+.msf-query label { display: grid; gap: 7px; min-width: 0; color: var(--msf-muted); font-size: 12px; font-weight: 560 }
+.msf-query input {
+  min-width: 0; width: 100%; height: 39px; padding: 0 12px;
+  border-radius: 9px; border: 1px solid var(--msf-border);
+  background: var(--msf-canvas); color: var(--msf-ink);
+  outline-offset: 2px; font-size: 13px;
+}
+.msf-query input::placeholder { color: var(--msf-subtle) }
+.msf-btn { min-height: 39px; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; border: 1px solid var(--msf-border); border-radius: 9px; color: var(--msf-ink); background: var(--msf-panel); cursor: pointer; transition: opacity .15s ease, background .15s ease }
+.msf-btn:hover { background: var(--msf-soft); text-decoration: none !important }
+.msf-btn:disabled { opacity: .48; cursor: not-allowed }
+.msf-btn-primary { background: var(--msf-action); color: var(--dsw-alias-label-primary-foreground, #fff); border-color: transparent }
+.msf-btn-primary:hover { background: var(--dsw-alias-button-primary-hover, var(--msf-action)); opacity: .92 }
+.msf-wrap { flex-wrap: wrap }
+.msf-flex { gap: 12px }
+.msf-gap-sm { gap: 8px }
+.msf-metrics { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin: 25px 0 16px; border-top: 1px solid var(--msf-border); padding-top: 19px }
+.msf-metric { min-width: 0 }
+.msf-value { margin-top: 5px; font-weight: 630; font-size: 17px; letter-spacing: -.02em; overflow-wrap: anywhere }
+.msf-action { border: 1px solid var(--msf-border); border-radius: 15px; padding: clamp(20px, 3vw, 30px); background: var(--msf-soft) }
+.msf-action-title { font-size: 23px; font-weight: 630; margin: 8px 0 9px; letter-spacing: -.02em }
+.msf-action p { font-size: 13px; line-height: 1.7; margin-bottom: 5px }
+.msf-actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap }
+.msf-facts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px 24px; margin-top: 20px }
+.msf-facts > div { display: grid; gap: 6px; padding: 13px 0; border-top: 1px solid var(--msf-border); min-width: 0 }
+.msf-facts span { font-size: 11px; color: var(--msf-muted) }
+.msf-facts b { font-size: 13px; font-weight: 590; overflow-wrap: anywhere }
+.msf-facts code, .msf-root code { font-family: var(--ds-font-family-code, monospace); font-size: 12px; font-weight: 500 }
+.msf-facts-full { grid-template-columns: repeat(3,minmax(0,1fr)) }
+.msf-checks { margin-top: 24px; border-top: 1px solid var(--msf-border); padding-top: 18px }
+.msf-checks > .msf-flex { margin: 13px 0 }
+.msf-checks details { font-size: 12px; color: var(--msf-muted); margin: 10px 0; }
+.msf-checks summary { cursor: pointer; font-weight: 600 }
+.msf-checks details p { line-height: 1.7; margin: 10px 0 }
+.msf-headline { padding: 0 3px 7px }
+.msf-headline p { margin-top: 7px; font-size: 13px; line-height: 1.6; color: var(--msf-muted) }
+.msf-empty { display: grid; justify-items: center; text-align: center; padding: 72px 20px; color: var(--msf-muted); border: 1px dashed var(--msf-border); border-radius: 15px; gap: 12px }
+.msf-empty h2 { color: var(--msf-ink); font-weight: 600 }
+.msf-empty p { max-width: 450px; font-size: 13px; line-height: 1.7 }
+.msf-alert { border: 1px solid var(--dsw-alias-state-warn-primary, #98702d); color: var(--msf-ink); background: var(--msf-panel); padding: 14px 17px; border-radius: 10px; font-size: 12px; line-height: 1.6 }
+.msf-alert ul { margin: 8px 0 0; padding-left: 18px }
+.msf-text-button { border: none; cursor: pointer; color: var(--msf-ink); background: transparent; width: max-content; font-size: 12px; padding: 9px 0; font-weight: 650 }
+.msf-text-button:hover { text-decoration: underline }
+.msf-list { margin: 15px 0 0; padding-left: 19px; font-size: 13px; line-height: 2; color: var(--msf-muted) }
+.msf-footer { border-top: 1px solid var(--msf-border); margin-top: 34px; padding-top: 17px; font-size: 11px; color: var(--msf-subtle) }
+@media (max-width: 820px) {
+  .msf-query { grid-template-columns: repeat(2,minmax(0,1fr)) }
+  .msf-query label:first-child { grid-column: 1/-1 }
+  .msf-query .msf-btn { grid-column: 1/-1 }
+  .msf-facts-full { grid-template-columns: 1fr }
+}
+@media (max-width: 540px) {
+  .msf-header { align-items: flex-start }
+  .msf-intro { margin-left: 0 }
+  .msf-brand-icon { width: 42px; height: 42px }
+  .msf-tabs { gap: 13px }
+  .msf-query { grid-template-columns: 1fr }
+  .msf-query label:first-child, .msf-query .msf-btn { grid-column: auto }
+  .msf-facts, .msf-metrics { grid-template-columns: 1fr 1fr }
+  .msf-facts-full { grid-template-columns: 1fr }
+}
+@media (prefers-reduced-motion: reduce) { .msf-btn { transition: none } }
