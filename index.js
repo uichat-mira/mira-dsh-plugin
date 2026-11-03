@@ -1,9 +1,10 @@
 import { defineTool } from '@deepseek-ai/dsh-tools'
 import { issueContract, prEvidence } from './lib/github.js'
 import { taskSnapshot } from './lib/task.js'
+import { registerPanelApi } from './lib/panel-api.js'
 
 export const name = 'mira-dsh-contract'
-export const inject = ['tools']
+export const inject = ['tools', 'webServer']
 
 const textTool = (name, description, parameters, execute) => defineTool({
   name, description, parameters,
@@ -15,6 +16,7 @@ const textTool = (name, description, parameters, execute) => defineTool({
 })
 
 export function apply(ctx) {
+  ctx.effect(() => registerPanelApi(ctx))
   ctx.tools.register(textTool('mira_task',
     'Inspect a Mira Issue with live Organization/repository policies, GitHub cross-referenced PRs, their CI and reviews; choose a safe next action. Read-only; NEVER dispatch a worker or assume permission to merge/close.',
     { repo: { type: 'string', required: true, description: 'Full repo, e.g. uichat-mira/folio' },
